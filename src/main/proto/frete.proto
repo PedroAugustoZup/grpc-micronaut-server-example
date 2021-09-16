@@ -10,6 +10,11 @@ service FreteService {
   rpc salvar (FreteRequest) returns (FreteResponse) {}
 }
 
+message ErroDetails{
+  int32 codigo = 1;
+  string menssagem = 2;
+}
+
 message FreteRequest {
   string cep = 1;
 }

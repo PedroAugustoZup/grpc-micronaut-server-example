@@ -1,13 +1,11 @@
 package br.com.zup
 
-import io.grpc.ServerBuilder
-fun main(args: Array<String>) {
-	val servidor = ServerBuilder
-		.forPort(50051)
-		.addService(FreteService())
-		.build()
+import io.micronaut.runtime.Micronaut
 
-	servidor.start()
-	servidor.awaitTermination()
+fun main(args: Array<String>) {
+	Micronaut.build()
+		.args(*args)
+		.packages("br.com.zup")
+		.start()
 }
 

@@ -1,3 +1,16 @@
 micronaut:
   application:
     name: grpcMicronautServerExample
+
+grpc:
+  server:
+    health:
+      enable: true
+#HEALPH
+endpoints:
+  all:
+    sensitive: false
+  health:
+    enabled: true
+    sensitive: false
+    details-visible: ANONYMOUS

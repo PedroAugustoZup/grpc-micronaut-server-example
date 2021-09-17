@@ -5,9 +5,11 @@ import com.google.rpc.Code
 import io.grpc.Status
 import io.grpc.protobuf.StatusProto
 import io.grpc.stub.StreamObserver
+import jakarta.inject.Singleton
 import org.slf4j.LoggerFactory
 import kotlin.random.Random
 
+@Singleton
 class FreteService: FreteServiceGrpc.FreteServiceImplBase() {
     private val logger = LoggerFactory.getLogger(FreteService::class.java)
 
@@ -16,9 +18,8 @@ class FreteService: FreteServiceGrpc.FreteServiceImplBase() {
 
         val cep = request!!.cep
         if(cep.isNullOrBlank()){
-            val error = Status.INVALID_ARGUMENT
-                                .withDescription("cep deve ser preenchido")
-                .asRuntimeException()
+            val error = Status.INVALID_ARGUMENT.withDescription("cep deve ser preenchido")
+                                .asRuntimeException()
             responseObserver?.onError(error)
             return
         }
